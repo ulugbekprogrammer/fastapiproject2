@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from models import Base
+import models
 from database import engine
 from routers import auth, todos, admin, users
 
 app = FastAPI()
 
-Base.metadata.create_all(bind=engine)
+models.Base.metadata.create_all(bind=engine)
 
 @app.get('/healthy')
 def healthy_check():
